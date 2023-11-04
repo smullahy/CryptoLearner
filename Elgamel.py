@@ -48,7 +48,7 @@ def elgamel_decryption(c_1, c_2, p, x):
     :param c_2: from ciphertext C = (c_1, c_2)
     :param p: from public key (p, b, y)
     :param x: private key x. Assumed to be known for decryption
-    :return:
+    :return: decrypted original message m
     """
 
     # Decrypt message by calculating (c_2) * (c_1)^x inverse mod p
