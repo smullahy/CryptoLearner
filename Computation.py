@@ -49,4 +49,15 @@ def multiplicative_inverse(base, modulus):
 
 
 def euler_totient(first_prime, second_prime):
+    """
+    Finds phi of n (first_prime * second_prime)
+    :param first_prime: a prime number
+    :param second_prime: a different prime number
+    :return: phi(first_prime * second_prime)
+    """
     return np.multiply(first_prime - 1, second_prime - 1)
+
+def generate_prime():
+    pass
+def generate_prim_root(prime_modulus):
+    pass
