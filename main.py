@@ -1,5 +1,4 @@
-import numpy as np
-from Elgamel import elgamel_encrypt
+from Elgamel import *
 
 for i in range(10):
     np.sqrt(i)
