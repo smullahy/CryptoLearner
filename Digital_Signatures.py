@@ -1,53 +1,53 @@
 from Computation import *
 
 
-def signature_key_creation(p, q):
+def signature_key_creation(prime_1, prime_2):
     """
     Creates a signing key using the RSA Digital Signatures crypto-system
-    :param p: a prime number
-    :param q: a prime number not equal to p
-    :return: public key (n,v), and private signing key s in form (n,v), s
+    :param prime_1: a prime number
+    :param prime_2: a prime number not equal to prime_1
+    :return: public key (pub_mod, verification_key), and private signing key signing_key in form (pub_mod, verification_key), signing_key
     """
 
-    # Calculate n = pq
-    n = np.multiply(p, q)
+    # Calculate pub_mod = prime_1 * prime_2
+    pub_mod = np.multiply(prime_1, prime_2)
 
-    # Calculate the euler totient value of n
-    phi_n = euler_totient(p, q)
+    # Calculate the euler totient value of pub_mod
+    phi_pub_mod = euler_totient(prime_1, prime_2)
 
-    # Find v such that gcd(v, euler_totient(n)) = 1
-    v = 2
-    while np.gcd(v, phi_n) != 1:
-        v += 1
+    # Find verification_key such that gcd(v, euler_totient(n)) = 1
+    verification_key = 2
+    while np.gcd(verification_key, phi_pub_mod) != 1:
+        verification_key += 1
 
     # Calculate signing key
-    s = multiplicative_inverse(v, phi_n)
+    signing_key = multiplicative_inverse(verification_key, phi_pub_mod)
 
-    # Publish (n,v) and have value of s to use in later encryption
-    return (n, v), s
+    # Publish (pub_mod, verification_key) and have value of signing_key to use in later encryption
+    return (pub_mod, verification_key), signing_key
 
 
-def sign_message(m, n, s):
+def sign_message(message, pub_mod, signing_key):
     """
     Signs a message using the RSA digital signatures crypto-system
-    :param m: message to sign
-    :param n: from public key (n, v)
-    :param s: from private key s
+    :param message: message to sign
+    :param pub_mod: from public key (pub_mod, verification_key)
+    :param signing_key: from private key signing_key
     :return: signed message
     """
-    return square_multiply(m, s, n)
+    return square_multiply(message, signing_key, pub_mod)
 
 
-def is_valid_signature(m, s, v, n):
+def is_valid_signature(message, signed_message, verification_key, pub_mod):
     """
     Checks if the signature provided is a valid signature
-    :param m: unsigned message
-    :param s: signed message
-    :param v: from public key (n, v)
-    :param n: from public key (n, v)
+    :param message: unsigned message
+    :param signed_message: signed message
+    :param verification_key: from public key (pub_mod, verification_key)
+    :param pub_mod: from public key (pub_mod, verification_key)
     :return: Boolean representing validity of key
     """
-    if square_multiply(s, v, n) == m:
+    if square_multiply(signed_message, verification_key, pub_mod) == message:
         return True
     else:
         return False
