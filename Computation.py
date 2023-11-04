@@ -61,8 +61,8 @@ def __division_remainder(dividend, divisor):
     return divisor_amt, remainder
 
 
-def multiplicative_inverse(base, modulus):
-    pass
+def multiplicative_inverse(b, p):
+    return pow(b, -1, p)
 
 
 def euler_totient(p, q):
