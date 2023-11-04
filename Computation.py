@@ -1,4 +1,6 @@
 import numpy as np
+import sympy
+import sympy as sp
 
 
 def square_multiply(base, power, modulus):
@@ -16,7 +18,6 @@ def square_multiply(base, power, modulus):
     for bit in bits[1:]:
         if bit == '1':
             answer = np.mod(np.multiply(np.power(answer, 2), base), modulus)
-            print(answer)
         elif bit == '0':
             answer = np.mod(np.power(answer, 2), modulus)
     return answer
@@ -57,7 +58,11 @@ def euler_totient(first_prime, second_prime):
     """
     return np.multiply(first_prime - 1, second_prime - 1)
 
+
 def generate_prime():
-    pass
+    return sympy.randprime(1000, 5000)
+
 def generate_prim_root(prime_modulus):
     pass
+
+print(square_multiply(2, 10, 11))
