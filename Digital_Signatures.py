@@ -16,7 +16,7 @@ def sign_message(m, n, s):
     return square_multiply(m, s, n)
 
 
-def verify_signature(m, s, v, n):
+def is_valid_signature(m, s, v, n):
     if square_multiply(s, v, n) == m:
         return True
     else:
