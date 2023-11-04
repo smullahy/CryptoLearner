@@ -31,23 +31,6 @@ def __convert_bits(power):
     return bin(power)[2:]
 
 
-def euclidean_algorithm(value1, value2):
-    """
-
-    :param value1:
-    :param value2:
-    :return:
-    """
-
-    if value1 >= value2:
-        start_value = value1
-    else:
-        start_value = value2
-    pass
-
-
-
-
 def __division_remainder(dividend, divisor):
     """
     Finds the amount of times the divisor is in the dividend and finds remainder
@@ -61,9 +44,9 @@ def __division_remainder(dividend, divisor):
     return divisor_amt, remainder
 
 
-def multiplicative_inverse(b, p):
-    return pow(b, -1, p)
+def multiplicative_inverse(base, modulus):
+    return pow(base, -1, modulus)
 
 
-def euler_totient(p, q):
-    return np.multiply(p - 1, q - 1)
+def euler_totient(first_prime, second_prime):
+    return np.multiply(first_prime - 1, second_prime - 1)
