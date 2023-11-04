@@ -14,13 +14,12 @@ def diffie_hellman_key_setup(prime, prim_root):
     return square_multiply(prim_root, secret_int, prime), secret_int
 
 
-def diffie_hellman_key_creation(base, secret_int):
+def diffie_hellman_key_creation(base, secret_int, prime):
     """
     Calculates a shared diffie hellman key
     :param base: base computed value
     :param secret_int: secret random value
+    :param prime: a prime number
     :return: shared diffie hellman key
     """
-
-    return np.power(base, secret_int)
-
+    return square_multiply(base, secret_int, prime)
