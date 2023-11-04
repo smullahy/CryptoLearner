@@ -5,7 +5,6 @@ def square_multiply(base, power, modulus):
     bits = __convert_bits(power)
 
     answer = base
-    print(f"Answer: {answer}")
     for bit in bits[1:]:
         if bit == '1':
             answer = np.mod(np.multiply(np.power(answer, 2), base), modulus)
