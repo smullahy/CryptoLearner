@@ -44,7 +44,7 @@ def __division_remainder(dividend, divisor):
 
 
 def multiplicative_inverse(base, modulus):
-    return pow(int(base), -1, modulus)
+    return pow(int(base), -1, int(modulus))
 
 
 def euler_totient(first_prime, second_prime):

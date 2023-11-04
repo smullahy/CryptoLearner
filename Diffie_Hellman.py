@@ -23,3 +23,4 @@ def diffie_hellman_key_creation(base, secret_int):
     """
 
     return np.power(base, secret_int)
+
