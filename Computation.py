@@ -16,7 +16,6 @@ def square_multiply(base, power, modulus):
     for bit in bits[1:]:
         if bit == '1':
             answer = np.mod(np.multiply(np.power(answer, 2), base), modulus)
-            print(answer)
         elif bit == '0':
             answer = np.mod(np.power(answer, 2), modulus)
     return answer
@@ -45,7 +44,7 @@ def __division_remainder(dividend, divisor):
 
 
 def multiplicative_inverse(base, modulus):
-    return pow(base, -1, modulus)
+    return pow(int(base), -1, modulus)
 
 
 def euler_totient(first_prime, second_prime):
