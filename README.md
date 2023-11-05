@@ -1,4 +1,4 @@
-<img align="center" src="https://github.com/smullahy/CryptoLearner/blob/main/Logo.png" alt="CryptoLearner Logo" width="600px">
+<img align="center" src="https://github.com/smullahy/CryptoLearner/blob/main/Logo.png" alt="CryptoLearner Logo" width="800px">
 
 ## Inspiration
 Our journey began with a fascination for the intricate world of cryptography and its pivotal role in securing modern communication. Inspired by a mathematical cryptology course and contemporary digital security challenges, we embarked on creating CryptoLearner, a tool designed to demystify the complexities of cryptographic algorithms for aspiring cryptographers and security enthusiasts alike.
