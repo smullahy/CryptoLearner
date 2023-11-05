@@ -48,5 +48,4 @@ def elgamal_decryption(cipher1, cipher2, prime, priv_key):
     """
 
     # Decrypt message by calculating (cipher2) * (cipher1) ^ priv_key inverse mod prime
-    # return np.mod(np.multiply(cipher2, multiplicative_inverse(square_multiply(cipher1, priv_key, prime), prime)))
     return np.mod(cipher2 * (multiplicative_inverse(pow(int(cipher1), int(priv_key), prime), prime)), prime)
