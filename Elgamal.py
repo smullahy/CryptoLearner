@@ -1,7 +1,7 @@
 from Computation import *
 
 
-def elgamal_key_creation(prime, prim_root):
+def elgamal_key_creation(prime, prim_root, priv_key):
     """
     Creates a key using the Elgamal crypto-system.
     :param prime: a prime number
@@ -9,14 +9,11 @@ def elgamal_key_creation(prime, prim_root):
     :return: Public key; (prime, prim_root, pub_key), and private key priv_key in form (prime, prim_root, pub_key), priv_key
     """
 
-    # Generate random priv_key in [1, prime - 2]
-    priv_key = np.random.randint(1, prime - 1, 1)[0]
-
     # Calculate pub_key = prim_root ^ priv_key mod prime
     pub_key = square_multiply(prim_root, priv_key, prime)
 
     # Publish public key (prime, prim_root, pub_key) and have value of priv_key for use in later decryption
-    return (prime, prim_root, pub_key), priv_key
+    return (prime, prim_root, pub_key)
 
 
 def elgamal_encryption(prime, prim_root, pub_key, message):

@@ -7,7 +7,8 @@ class EncodingScheme():
         self.prime = generate_prime()
         self.prim_root = generate_prim_root(self.prime)
 
-        keys = elgamal_key_creation(self.prime, self.prim_root)
+
+        keys = elgamal_key_creation(self.prime, self.prim_root, 212)
         self.public_key = keys[0][2]
         self.private_key = keys[1]
 
@@ -37,8 +38,9 @@ class EncodingScheme():
             decrypted.append(elgamal_decryption(char[0], char[1], self.prime, self.private_key))
         return self.convert_to_string(decrypted)
 
+
 if __name__ == '__main__':
-    message = "Hello"
+    message = "Hello World!"
     encoder = EncodingScheme()
 
     encryptedd = encoder.encrypt_el_gamal(message)
