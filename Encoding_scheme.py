@@ -1,14 +1,21 @@
 from Elgamal import *
 
 
+def convert_to_string(ascii_list):
+    message = ""
+    for int_char in ascii_list:
+        message += chr(int_char)
+    return message
+
+
 class EncodingScheme():
 
     def __init__(self):
         self.prime = generate_prime()
         self.prim_root = generate_prim_root(self.prime)
 
-
-        keys = elgamal_key_creation(self.prime, self.prim_root, 212)
+        priv_key = np.random.randint(1, self.prime)
+        keys = elgamal_key_creation(self.prime, self.prim_root, priv_key)
         self.public_key = keys[0][2]
         self.private_key = keys[1]
 
@@ -17,12 +24,6 @@ class EncodingScheme():
         for char in message:
             ascii_list.append(ord(char))
         return ascii_list
-
-    def convert_to_string(self, ascii_list):
-        message = ""
-        for int_char in ascii_list:
-            message += chr(int_char)
-        return message
 
     def encrypt_el_gamal(self, message):
         ascii_list = self.convert_to_ascii(message)
@@ -36,7 +37,7 @@ class EncodingScheme():
         decrypted = []
         for char in ciphertext:
             decrypted.append(elgamal_decryption(char[0], char[1], self.prime, self.private_key))
-        return self.convert_to_string(decrypted)
+        return convert_to_string(decrypted)
 
 
 if __name__ == '__main__':

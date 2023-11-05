@@ -1,6 +1,9 @@
 import sys
-import random
 from PySide6 import QtCore, QtWidgets, QtGui
+
+import Encoding_scheme
+from Encoding_scheme import *
+
 
 if __name__ == "__main__":
     global encrypted_msg
@@ -85,20 +88,30 @@ if __name__ == "__main__":
         sender_layout.addWidget(sender_title)
         msg_label = QtWidgets.QLabel(' ', sender_page)
         sender_layout.addWidget(msg_label)
+
         user_input = user_input_line_edit.text()
         msg_label.setText(f'You entered: {user_input}')
         msg_label.setFont(body_font)
         print(f'User entered: {user_input}')
-        explanation1 = QtWidgets.QLabel('This is what happened to your code', sender_page)
+        encode = Encoding_scheme.EncodingScheme()
+
+        ascii_text = encode.convert_to_ascii(user_input)
+        explanation1 = QtWidgets.QLabel(f'Step 1: We convert the user input to ASCII value.', sender_page)
         explanation1.setFont(body_font)
-        explanation2 = QtWidgets.QLabel('This is what was sent to your receiver', sender_page)
+
+        explanation2 = QtWidgets.QLabel(f'Converted ASCII Value: {ascii_text}', sender_page)
         explanation2.setFont(body_font)
-        encrypted_msg = 863498221
-        encrypted = QtWidgets.QLabel(str(encrypted_msg), sender_page)
+
+        explanation3 = QtWidgets.QLabel(f'Step 2: We convert the ASCII to our cipher text using Elgamal. Elgamal '
+                                        f'is an asymmetric encryption technique that uses different keys for the'
+                                        f' encryption and decryption, exploiting the difficulty of solving discrete '
+                                        f'logarithms to ensure secure communication.', sender_page)
+        explanation3.setFont(body_font)
+        encrypted_msg = encode.encrypt_el_gamal(ascii_text)
+        encrypted = QtWidgets.QLabel(f'Cipher Text: {encrypted_msg}', sender_page)
         print(f'Encrypted Message: {encrypted_msg}')
         encrypted.setFont(body_font)
-        explanation3 = QtWidgets.QLabel('See how it works on the receivers side', sender_page)
-        explanation3.setFont(body_font)
+
 
         sender_layout.addWidget(explanation1)
         sender_layout.addWidget(explanation2)
