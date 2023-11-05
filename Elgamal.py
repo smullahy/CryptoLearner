@@ -1,9 +1,9 @@
 from Computation import *
 
 
-def elgamel_key_creation(prime, prim_root):
+def elgamal_key_creation(prime, prim_root):
     """
-    Creates a key using the ElGamel crypto-system.
+    Creates a key using the Elgamal crypto-system.
     :param prime: a prime number
     :param prim_root: a primitive root mod prime
     :return: Public key; (prime, prim_root, pub_key), and private key priv_key in form (prime, prim_root, pub_key), priv_key
@@ -19,9 +19,9 @@ def elgamel_key_creation(prime, prim_root):
     return (prime, prim_root, pub_key), priv_key
 
 
-def elgamel_encryption(prime, prim_root, pub_key, message):
+def elgamal_encryption(prime, prim_root, pub_key, message):
     """
-    Encrypts a message using the ElGamel crypto-system
+    Encrypts a message using the Elgamal crypto-system
     :param prime: from public key (prime, prim_root, pub_key)
     :param prim_root: from public key (prime, prim_root, pub_key)
     :param pub_key: from public key (prime, prim_root, pub_key)
@@ -40,9 +40,9 @@ def elgamel_encryption(prime, prim_root, pub_key, message):
     return cipher1, cipher2
 
 
-def elgamel_decryption(cipher1, cipher2, prime, priv_key):
+def elgamal_decryption(cipher1, cipher2, prime, priv_key):
     """
-    Decrypts a message using the ElGamel crypto-system
+    Decrypts a message using the Elgamal crypto-system
     :param cipher1: from ciphertext = (cipher1, cipher2)
     :param cipher2: from ciphertext = (cipher1, cipher2)
     :param prime: from public key (prime, prim_root, pub_key)
