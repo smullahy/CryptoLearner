@@ -17,9 +17,9 @@ def square_multiply(base, power, modulus):
     answer = base
     for bit in bits[1:]:
         if bit == '1':
-            answer = np.mod(np.multiply(np.power(answer, 2), base), modulus)
+            answer = np.mod(pow(int(answer), 2, modulus) * base, modulus)
         elif bit == '0':
-            answer = np.mod(np.power(answer, 2), modulus)
+            answer = np.mod(pow(int(answer), 2, modulus), modulus)
     return answer
 
 
@@ -46,7 +46,7 @@ def __division_remainder(dividend, divisor):
 
 
 def multiplicative_inverse(base, modulus):
-    return pow(base, -1, modulus)
+    return pow(int(base), -1, int(modulus))
 
 
 def euler_totient(first_prime, second_prime):
@@ -63,6 +63,8 @@ def generate_prime():
     return sympy.randprime(1000, 5000)
 
 def generate_prim_root(prime_modulus):
-    pass
-
-print(square_multiply(2, 10, 11))
+    for i in range(1000, prime_modulus - 2):
+        if sympy.is_primitive_root(i, prime_modulus):
+            return i
+    print("WARNING")
+    return 2
